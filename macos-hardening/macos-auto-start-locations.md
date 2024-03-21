@@ -9,7 +9,7 @@ Other ways to support HackTricks:
 * If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
 * Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
 * Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
-* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** me on **Twitter** 🐦 [**@carlospolopm**](https://twitter.com/carlospolopm)**.**
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@carlospolopm**](https://twitter.com/hacktricks\_live)**.**
 * **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
 
 </details>
@@ -132,7 +132,7 @@ Writeup (xterm): [https://theevilbit.github.io/beyond/beyond\_0018/](https://the
 
 #### Description & Exploitation
 
-Shell startup files are executed when our shell environment like `zsh` or `bash` is **starting up**. macOS defaults to `/bin/zsh` these days, and **whenever we open `Terminal` or SSH** into the device, this is the shell environment we are placed into. `bash` and `sh` are still available, however they have to be specifically started.
+When initiating a shell environment such as `zsh` or `bash`, **certain startup files are run**. macOS currently uses `/bin/zsh` as the default shell. This shell is automatically accessed when the Terminal application is launched or when a device is accessed via SSH. While `bash` and `sh` are also present in macOS, they need to be explicitly invoked to be used.
 
 The man page of zsh, which we can read with **`man zsh`** has a long description of the startup files.
 
@@ -494,7 +494,7 @@ The iTerm2 preferences located in **`~/Library/Preferences/com.googlecode.iterm2
 
 This setting can be configured in the iTerm2 settings:
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 And the command is reflected in the preferences:
 
@@ -569,7 +569,7 @@ chmod +x "$HOME/Library/Application Support/xbar/plugins/a.sh"
 
 #### Description
 
-[**Hammerspoon**](https://github.com/Hammerspoon/hammerspoon) is an automation tool, that allows **macOS scripting through LUA scripting language**. We can even embed full AppleScript code as well as run shell scripts.
+[**Hammerspoon**](https://github.com/Hammerspoon/hammerspoon) serves as an automation platform for **macOS**, leveraging the **LUA scripting language** for its operations. Notably, it supports the integration of complete AppleScript code and the execution of shell scripts, enhancing its scripting capabilities significantly.
 
 The app looks for a single file, `~/.hammerspoon/init.lua`, and when started the script will be executed.
 
@@ -579,6 +579,32 @@ cat > "$HOME/.hammerspoon/init.lua" << EOF
 hs.execute("/Applications/iTerm.app/Contents/MacOS/iTerm2")
 EOF
 ```
+
+### BetterTouchTool
+
+* Useful to bypass sandbox: [✅](https://emojipedia.org/check-mark-button)
+  * But BetterTouchTool must be installed
+* TCC bypass: [✅](https://emojipedia.org/check-mark-button)
+  * It requests Automation-Shortcuts and Accessibility permissions
+
+#### Location
+
+* `~/Library/Application Support/BetterTouchTool/*`
+
+This tool allows to indicate applications or scripts to execute when some shortcuts are pressed . An attacker might be able configure his own **shortcut and action to execute in the database** to make it execute arbitrary code (a shortcut could be to just to press a key).
+
+### Alfred
+
+* Useful to bypass sandbox: [✅](https://emojipedia.org/check-mark-button)
+  * But Alfred must be installed
+* TCC bypass: [✅](https://emojipedia.org/check-mark-button)
+  * It requests Automation, Accessibility and even Full-Disk access permissions
+
+#### Location
+
+* `???`
+
+It allows to create workflows that can execute code when certain conditions are met. Potentially it's possible for an attacker to create a workflow file and make Alfred load it (it's needed to pay the premium version to use workflows).
 
 ### SSHRC
 
@@ -668,8 +694,7 @@ Writeup: [https://theevilbit.github.io/beyond/beyond\_0014/](https://theevilbit.
 
 #### **Description**
 
-“At tasks” are used to **schedule tasks at specific times**.\
-These tasks differ from cron in that **they are one time tasks** t**hat get removed after executing**. However, they will **survive a system restart** so they can’t be ruled out as a potential threat.
+`at` tasks are designed for **scheduling one-time tasks** to be executed at certain times. Unlike cron jobs, `at` tasks are automatically removed post-execution. It's crucial to note that these tasks are persistent across system reboots, marking them as potential security concerns under certain conditions.
 
 By **default** they are **disabled** but the **root** user can **enable** **them** with:
 
@@ -767,24 +792,19 @@ Writeup: [https://posts.specterops.io/folder-actions-for-persistence-on-macos-89
 
 #### Description & Exploitation
 
-A Folder Action script is executed when the folder to which it is attached has items added or removed, or when its window is opened, closed, moved, or resized:
+Folder Actions are scripts automatically triggered by changes in a folder such as adding, removing items, or other actions like opening or resizing the folder window. These actions can be utilized for various tasks, and can be triggered in different ways like using the Finder UI or terminal commands.
 
-* Open the folder via the Finder UI
-* Add a file to the folder (can be done via drag/drop or even in a shell prompt from a terminal)
-* Remove a file from the folder (can be done via drag/drop or even in a shell prompt from a terminal)
-* Navigate out of the folder via the UI
+To set up Folder Actions, you have options like:
 
-There are a couple ways to implement this:
+1. Crafting a Folder Action workflow with [Automator](https://support.apple.com/guide/automator/welcome/mac) and installing it as a service.
+2. Attaching a script manually via the Folder Actions Setup in the context menu of a folder.
+3. Utilizing OSAScript to send Apple Event messages to the `System Events.app` for programmatically setting up a Folder Action.
+   * This method is particularly useful for embedding the action into the system, offering a level of persistence.
 
-1. Use the [Automator](https://support.apple.com/guide/automator/welcome/mac) program to create a Folder Action workflow file (.workflow) and install it as a service.
-2. Right-click on a folder, select `Folder Actions Setup...`, `Run Service`, and manually attach a script.
-3. Use OSAScript to send Apple Event messages to the `System Events.app` to programmatically query and register a new `Folder Action.`
-   * [ ] This is the way to implement persistence using an OSAScript to send Apple Event messages to `System Events.app`
+The following script is an example of what can be executed by a Folder Action:
 
-This is the script that will be executed:
-
-{% code title="source.js" %}
 ```applescript
+// source.js
 var app = Application.currentApplication();
 app.includeStandardAdditions = true;
 app.doShellScript("touch /tmp/folderaction.txt");
@@ -792,13 +812,17 @@ app.doShellScript("touch ~/Desktop/folderaction.txt");
 app.doShellScript("mkdir /tmp/asd123");
 app.doShellScript("cp -R ~/Desktop /tmp/asd123");
 ```
-{% endcode %}
 
-Compile it with: `osacompile -l JavaScript -o folder.scpt source.js`
+To make the above script usable by Folder Actions, compile it using:
 
-Then execute the following script to enable Folder Actions and attach the previously compiled script with the folder **`/users/username/Desktop`**:
+```bash
+osacompile -l JavaScript -o folder.scpt source.js
+```
+
+After the script is compiled, set up Folder Actions by executing the script below. This script will enable Folder Actions globally and specifically attach the previously compiled script to the Desktop folder.
 
 ```javascript
+// Enabling and attaching Folder Action
 var se = Application("System Events");
 se.folderActionsEnabled = true;
 var myScript = se.Script({name: "source.js", posixPath: "/tmp/source.js"});
@@ -807,7 +831,11 @@ se.folderActions.push(fa);
 fa.scripts.push(myScript);
 ```
 
-Execute script with: `osascript -l JavaScript /Users/username/attach.scpt`
+Run the setup script with:
+
+```bash
+osascript -l JavaScript /Users/username/attach.scpt
+```
 
 * This is the way yo implement this persistence via GUI:
 
@@ -835,7 +863,7 @@ mv /tmp/folder.scpt "$HOME/Library/Scripts/Folder Action Scripts"
 
 Then, open the `Folder Actions Setup` app, select the **folder you would like to watch** and select in your case **`folder.scpt`** (in my case I called it output2.scp):
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1).png" alt="" width="297"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1).png" alt="" width="297"><figcaption></figcaption></figure>
 
 Now, if you open that folder with **Finder**, your script will be executed.
 
@@ -847,7 +875,7 @@ Now, lets try to prepare this persistence without GUI access:
    * `cp ~/Library/Preferences/com.apple.FolderActionsDispatcher.plist /tmp`
 2. **Remove** the Folder Actions you just set:
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now that we have an empty environment
 
@@ -1021,7 +1049,7 @@ Writeup: [https://posts.specterops.io/saving-your-access-d562bf5bf90b](https://p
 * `~/Library/Screen Savers`
   * **Trigger**: Select the screen saver
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 #### Description & Exploit
 
@@ -1528,12 +1556,15 @@ You could force a warning with `sudo audit -n`.
 ### Startup Items
 
 {% hint style="danger" %}
-**This is deprecated, so nothing should be found in the following directories.**
+**This is deprecated, so nothing should be found in those directories.**
 {% endhint %}
 
-A **StartupItem** is a **directory** that gets **placed** in one of these two folders. `/Library/StartupItems/` or `/System/Library/StartupItems/`
+The **StartupItem** is a directory that should be positioned within either `/Library/StartupItems/` or `/System/Library/StartupItems/`. Once this directory is established, it must encompass two specific files:
 
-After placing a new directory in one of these two locations, **two more items** need to be placed inside that directory. These two items are a **rc script** **and a plist** that holds a few settings. This plist must be called “**StartupParameters.plist**”.
+1. An **rc script**: A shell script executed at startup.
+2. A **plist file**, specifically named `StartupParameters.plist`, which contains various configuration settings.
+
+Ensure that both the rc script and the `StartupParameters.plist` file are correctly placed inside the **StartupItem** directory for the startup process to recognize and utilize them.
 
 {% tabs %}
 {% tab title="StartupParameters.plist" %}
@@ -1585,9 +1616,9 @@ I cannot find this component in my macOS so for more info check the writeup
 
 Writeup: [https://theevilbit.github.io/beyond/beyond\_0023/](https://theevilbit.github.io/beyond/beyond\_0023/)
 
-Apple introduced a logging mechanism called **emond**. It appears it was never fully developed, and development may have been **abandoned** by Apple for other mechanisms, but it remains **available**.
+Introduced by Apple, **emond** is a logging mechanism that seems to be underdeveloped or possibly abandoned, yet it remains accessible. While not particularly beneficial for a Mac administrator, this obscure service could serve as a subtle persistence method for threat actors, likely unnoticed by most macOS admins.
 
-This little-known service may **not be much use to a Mac admin**, but to a threat actor one very good reason would be to use it as a **persistence mechanism that most macOS admins probably wouldn't know** to look for. Detecting malicious use of emond shouldn't be difficult, as the System LaunchDaemon for the service looks for scripts to run in only one place:
+For those aware of its existence, identifying any malicious usage of **emond** is straightforward. The system's LaunchDaemon for this service seeks scripts to execute in a single directory. To inspect this, the following command can be used:
 
 ```bash
 ls -l /private/var/db/emondClients
@@ -1778,7 +1809,7 @@ Other ways to support HackTricks:
 * If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
 * Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
 * Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
-* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** me on **Twitter** 🐦 [**@carlospolopm**](https://twitter.com/carlospolopm)**.**
+* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@carlospolopm**](https://twitter.com/hacktricks\_live)**.**
 * **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
 
 </details>

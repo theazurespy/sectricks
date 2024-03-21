@@ -3,9 +3,8 @@
 ## 👾 Welcome!
 
 * [HackTricks](README.md)
-* [HackTricks Values & faq](welcome/hacktricks-values-and-faq.md)
+* [HackTricks Values & FAQ](welcome/hacktricks-values-and-faq.md)
 * [About the author](welcome/about-the-author.md)
-* [Getting Started in Hacking](welcome/getting-started-in-hacking.md)
 
 ## 🤩 Generic Methodologies & Resources
 
@@ -40,9 +39,7 @@
   * [Memory dump analysis](forensics/basic-forensic-methodology/memory-dump-analysis/README.md)
     * [Volatility - CheatSheet](generic-methodologies-and-resources/basic-forensic-methodology/memory-dump-analysis/volatility-cheatsheet.md)
   * [Partitions/File Systems/Carving](forensics/basic-forensic-methodology/partitions-file-systems-carving/README.md)
-    * [EXT](forensics/basic-forensic-methodology/partitions-file-systems-carving/ext.md)
     * [File/Data Carving & Recovery Tools](forensics/basic-forensic-methodology/partitions-file-systems-carving/file-data-carving-recovery-tools.md)
-    * [NTFS](forensics/basic-forensic-methodology/partitions-file-systems-carving/ntfs.md)
   * [Pcap Inspection](forensics/basic-forensic-methodology/pcap-inspection/README.md)
     * [DNSCat pcap analysis](forensics/basic-forensic-methodology/pcap-inspection/dnscat-exfiltration.md)
     * [Suricata & Iptables cheatsheet](generic-methodologies-and-resources/basic-forensic-methodology/pcap-inspection/suricata-and-iptables-cheatsheet.md)
@@ -60,7 +57,6 @@
     * [Video and Audio file analysis](forensics/basic-forensic-methodology/specific-software-file-type-tricks/video-and-audio-file-analysis.md)
     * [ZIPs tricks](forensics/basic-forensic-methodology/specific-software-file-type-tricks/zips-tricks.md)
   * [Windows Artifacts](forensics/basic-forensic-methodology/windows-forensics/README.md)
-    * [Windows Processes](forensics/basic-forensic-methodology/windows-forensics/windows-processes.md)
     * [Interesting Windows Registry Keys](forensics/basic-forensic-methodology/windows-forensics/interesting-windows-registry-keys.md)
 * [Brute Force - CheatSheet](generic-methodologies-and-resources/brute-force.md)
 * [Python Sandbox Escape & Pyscript](generic-methodologies-and-resources/python/README.md)
@@ -165,6 +161,7 @@
   * [macOS Privilege Escalation](macos-hardening/macos-security-and-privilege-escalation/macos-privilege-escalation.md)
   * [macOS Proces Abuse](macos-hardening/macos-security-and-privilege-escalation/macos-proces-abuse/README.md)
     * [macOS Dirty NIB](macos-hardening/macos-security-and-privilege-escalation/macos-proces-abuse/macos-dirty-nib.md)
+    * [macOS Chromium Injection](macos-hardening/macos-security-and-privilege-escalation/macos-proces-abuse/macos-chromium-injection.md)
     * [macOS Electron Applications Injection](macos-hardening/macos-security-and-privilege-escalation/macos-proces-abuse/macos-electron-applications-injection.md)
     * [macOS Function Hooking](macos-hardening/macos-security-and-privilege-escalation/mac-os-architecture/macos-function-hooking.md)
     * [macOS IPC - Inter Process Communication](macos-hardening/macos-security-and-privilege-escalation/mac-os-architecture/macos-ipc-inter-process-communication/README.md)
@@ -179,6 +176,7 @@
     * [macOS Library Injection](macos-hardening/macos-security-and-privilege-escalation/macos-proces-abuse/macos-library-injection/README.md)
       * [macOS Dyld Hijacking & DYLD\_INSERT\_LIBRARIES](macos-hardening/macos-security-and-privilege-escalation/macos-dyld-hijacking-and-dyld\_insert\_libraries.md)
     * [macOS Perl Applications Injection](macos-hardening/macos-security-and-privilege-escalation/macos-proces-abuse/macos-perl-applications-injection.md)
+    * [macOS Python Applications Injection](macos-hardening/macos-security-and-privilege-escalation/macos-proces-abuse/macos-python-applications-injection.md)
     * [macOS Ruby Applications Injection](macos-hardening/macos-security-and-privilege-escalation/macos-proces-abuse/macos-ruby-applications-injection.md)
     * [macOS .Net Applications Injection](macos-hardening/macos-security-and-privilege-escalation/macos-proces-abuse/macos-.net-applications-injection.md)
   * [macOS Security Protections](macos-hardening/macos-security-and-privilege-escalation/macos-security-protections/README.md)
@@ -210,7 +208,6 @@
 * [Checklist - Local Windows Privilege Escalation](windows-hardening/checklist-windows-privilege-escalation.md)
 * [Windows Local Privilege Escalation](windows-hardening/windows-local-privilege-escalation/README.md)
   * [Abusing Tokens](windows-hardening/windows-local-privilege-escalation/privilege-escalation-abusing-tokens/README.md)
-    * [Abuse SeLoadDriverPrivilege](windows-hardening/windows-local-privilege-escalation/privilege-escalation-abusing-tokens/abuse-seloaddriverprivilege.md)
   * [Access Tokens](windows-hardening/windows-local-privilege-escalation/access-tokens.md)
   * [ACLs - DACLs/SACLs/ACEs](windows-hardening/windows-local-privilege-escalation/acls-dacls-sacls-aces.md)
   * [AppendData/AddSubdirectory permission over service registry](windows-hardening/windows-local-privilege-escalation/appenddata-addsubdirectory-permission-over-service-registry.md)
@@ -221,16 +218,12 @@
   * [DPAPI - Extracting Passwords](windows-hardening/windows-local-privilege-escalation/dpapi-extracting-passwords.md)
   * [From High Integrity to SYSTEM with Name Pipes](windows-hardening/windows-local-privilege-escalation/from-high-integrity-to-system-with-name-pipes.md)
   * [Integrity Levels](windows-hardening/windows-local-privilege-escalation/integrity-levels.md)
-  * [JAWS](windows-hardening/windows-local-privilege-escalation/jaws.md)
   * [JuicyPotato](windows-hardening/windows-local-privilege-escalation/juicypotato.md)
   * [Leaked Handle Exploitation](windows-hardening/windows-local-privilege-escalation/leaked-handle-exploitation.md)
   * [MSI Wrapper](windows-hardening/windows-local-privilege-escalation/msi-wrapper.md)
   * [Named Pipe Client Impersonation](windows-hardening/windows-local-privilege-escalation/named-pipe-client-impersonation.md)
-  * [PowerUp](windows-hardening/windows-local-privilege-escalation/powerup.md)
   * [Privilege Escalation with Autoruns](windows-hardening/windows-local-privilege-escalation/privilege-escalation-with-autorun-binaries.md)
   * [RoguePotato, PrintSpoofer, SharpEfsPotato, GodPotato](windows-hardening/windows-local-privilege-escalation/roguepotato-and-printspoofer.md)
-  * [RottenPotato](windows-hardening/windows-local-privilege-escalation/rottenpotato.md)
-  * [Seatbelt](windows-hardening/windows-local-privilege-escalation/seatbelt.md)
   * [SeDebug + SeImpersonate copy token](windows-hardening/windows-local-privilege-escalation/sedebug-+-seimpersonate-copy-token.md)
   * [SeImpersonate from High To System](windows-hardening/windows-local-privilege-escalation/seimpersonate-from-high-to-system.md)
   * [Windows C Payloads](windows-hardening/windows-local-privilege-escalation/windows-c-payloads.md)
@@ -314,7 +307,6 @@
     * [Frida Tutorial 3](mobile-pentesting/android-app-pentesting/frida-tutorial/owaspuncrackable-1.md)
     * [Objection Tutorial](mobile-pentesting/android-app-pentesting/frida-tutorial/objection-tutorial.md)
   * [Google CTF 2018 - Shall We Play a Game?](mobile-pentesting/android-app-pentesting/google-ctf-2018-shall-we-play-a-game.md)
-  * [Inspeckage Tutorial](mobile-pentesting/android-app-pentesting/inspeckage-tutorial.md)
   * [Install Burp Certificate](mobile-pentesting/android-app-pentesting/install-burp-certificate.md)
   * [Intent Injection](mobile-pentesting/android-app-pentesting/intent-injection.md)
   * [Make APK Accept CA Certificate](mobile-pentesting/android-app-pentesting/make-apk-accept-ca-certificate.md)
@@ -348,22 +340,7 @@
 ## 👽 Network Services Pentesting
 
 * [Pentesting JDWP - Java Debug Wire Protocol](network-services-pentesting/pentesting-jdwp-java-debug-wire-protocol.md)
-* [Pentesting Printers](network-services-pentesting/pentesting-printers/README.md)
-  * [Accounting bypass](network-services-pentesting/pentesting-printers/accounting-bypass.md)
-  * [Buffer Overflows](network-services-pentesting/pentesting-printers/buffer-overflows.md)
-  * [Credentials Disclosure / Brute-Force](network-services-pentesting/pentesting-printers/credentials-disclosure-brute-force.md)
-  * [Cross-Site Printing](network-services-pentesting/pentesting-printers/cross-site-printing.md)
-  * [Document Processing](network-services-pentesting/pentesting-printers/document-processing.md)
-  * [Factory Defaults](network-services-pentesting/pentesting-printers/factory-defaults.md)
-  * [File system access](network-services-pentesting/pentesting-printers/file-system-access.md)
-  * [Firmware updates](network-services-pentesting/pentesting-printers/firmware-updates.md)
-  * [Memory Access](network-services-pentesting/pentesting-printers/memory-access.md)
-  * [Physical Damage](network-services-pentesting/pentesting-printers/physical-damage.md)
-  * [Software packages](network-services-pentesting/pentesting-printers/software-packages.md)
-  * [Transmission channel](network-services-pentesting/pentesting-printers/transmission-channel.md)
-  * [Print job manipulation](network-services-pentesting/pentesting-printers/print-job-manipulation.md)
-  * [Print Job Retention](network-services-pentesting/pentesting-printers/print-job-retention.md)
-  * [Scanner and Fax](network-services-pentesting/pentesting-printers/scanner-and-fax.md)
+* [Pentesting Printers](http://hacking-printers.net/wiki/index.php/Main\_Page)
 * [Pentesting SAP](network-services-pentesting/pentesting-sap.md)
 * [Pentesting VoIP](network-services-pentesting/pentesting-voip/README.md)
   * [Basic VoIP Protocols](network-services-pentesting/pentesting-voip/basic-voip-protocols/README.md)
@@ -376,6 +353,7 @@
 * [22 - Pentesting SSH/SFTP](network-services-pentesting/pentesting-ssh.md)
 * [23 - Pentesting Telnet](network-services-pentesting/pentesting-telnet.md)
 * [25,465,587 - Pentesting SMTP/s](network-services-pentesting/pentesting-smtp/README.md)
+  * [SMTP Smuggling](network-services-pentesting/pentesting-smtp/smtp-smuggling.md)
   * [SMTP - Commands](network-services-pentesting/pentesting-smtp/smtp-commands.md)
 * [43 - Pentesting WHOIS](network-services-pentesting/43-pentesting-whois.md)
 * [49 - Pentesting TACACS+](network-services-pentesting/49-pentesting-tacacs+.md)
@@ -477,6 +455,7 @@
 * [554,8554 - Pentesting RTSP](network-services-pentesting/554-8554-pentesting-rtsp.md)
 * [623/UDP/TCP - IPMI](network-services-pentesting/623-udp-ipmi.md)
 * [631 - Internet Printing Protocol(IPP)](network-services-pentesting/pentesting-631-internet-printing-protocol-ipp.md)
+* [700 - Pentesting EPP](network-services-pentesting/700-pentesting-epp.md)
 * [873 - Pentesting Rsync](network-services-pentesting/873-pentesting-rsync.md)
 * [1026 - Pentesting Rusersd](network-services-pentesting/1026-pentesting-rusersd.md)
 * [1080 - Pentesting Socks](network-services-pentesting/1080-pentesting-socks.md)
@@ -485,10 +464,6 @@
 * [1433 - Pentesting MSSQL - Microsoft SQL Server](network-services-pentesting/pentesting-mssql-microsoft-sql-server/README.md)
   * [Types of MSSQL Users](network-services-pentesting/pentesting-mssql-microsoft-sql-server/types-of-mssql-users.md)
 * [1521,1522-1529 - Pentesting Oracle TNS Listener](network-services-pentesting/1521-1522-1529-pentesting-oracle-listener/README.md)
-  * [Oracle Pentesting requirements installation](network-services-pentesting/1521-1522-1529-pentesting-oracle-listener/oracle-pentesting-requirements-installation.md)
-  * [TNS Poison](network-services-pentesting/1521-1522-1529-pentesting-oracle-listener/tns-poison.md)
-  * [Remote stealth pass brute force](network-services-pentesting/1521-1522-1529-pentesting-oracle-listener/remote-stealth-pass-brute-force.md)
-  * [Oracle RCE & more](network-services-pentesting/1521-1522-1529-pentesting-oracle-listener/oracle-rce-and-more.md)
 * [1723 - Pentesting PPTP](network-services-pentesting/1723-pentesting-pptp.md)
 * [1883 - Pentesting MQTT (Mosquitto)](network-services-pentesting/1883-pentesting-mqtt-mosquitto.md)
 * [2049 - Pentesting NFS Service](network-services-pentesting/nfs-service-pentesting.md)
@@ -538,10 +513,9 @@
 * [47808/udp - Pentesting BACNet](network-services-pentesting/47808-udp-bacnet.md)
 * [50030,50060,50070,50075,50090 - Pentesting Hadoop](network-services-pentesting/50030-50060-50070-50075-50090-pentesting-hadoop.md)
 
-## 🕸 Pentesting Web
+## 🕸️ Pentesting Web
 
 * [Web Vulnerabilities Methodology](pentesting-web/web-vulnerabilities-methodology/README.md)
-  * [Browser Extensions](pentesting-web/web-vulnerabilities-methodology/browser-extensions.md)
 * [Reflecting Techniques - PoCs and Polygloths CheatSheet](pentesting-web/pocs-and-polygloths-cheatsheet/README.md)
   * [Web Vulns List](pentesting-web/pocs-and-polygloths-cheatsheet/web-vulns-list.md)
 * [2FA/OTP Bypass](pentesting-web/2fa-bypass.md)
@@ -616,7 +590,6 @@
   * [Login bypass List](pentesting-web/login-bypass/sql-login-bypass.md)
 * [NoSQL injection](pentesting-web/nosql-injection.md)
 * [OAuth to Account takeover](pentesting-web/oauth-to-account-takeover.md)
-  * [OAuth - Happy Paths, XSS, Iframes & Post Messages to leak code & state values](pentesting-web/oauth-to-account-takeover/oauth-happy-paths-xss-iframes-and-post-messages-to-leak-code-and-state-values.md)
 * [Open Redirect](pentesting-web/open-redirect.md)
 * [Parameter Pollution](pentesting-web/parameter-pollution.md)
 * [Phone Number Injections](pentesting-web/phone-number-injections.md)
@@ -682,7 +655,6 @@
   * [Sniff Leak](pentesting-web/xss-cross-site-scripting/sniff-leak.md)
   * [Steal Info JS](pentesting-web/xss-cross-site-scripting/steal-info-js.md)
   * [XSS in Markdown](pentesting-web/xss-cross-site-scripting/xss-in-markdown.md)
-  * [XSS Tools](pentesting-web/xss-cross-site-scripting/xss-tools.md)
 * [XSSI (Cross-Site Script Inclusion)](pentesting-web/xssi-cross-site-script-inclusion.md)
 * [XS-Search/XS-Leaks](pentesting-web/xs-search.md)
   * [Connection Pool Examples](pentesting-web/xs-search/connection-pool-example.md)
@@ -696,7 +668,7 @@
   * [CSS Injection](pentesting-web/xs-search/css-injection/README.md)
     * [CSS Injection Code](pentesting-web/xs-search/css-injection/css-injection-code.md)
 
-## ⛈ Cloud Security
+## ⛈️ Cloud Security
 
 * [Pentesting Kubernetes](https://cloud.hacktricks.xyz/pentesting-cloud/kubernetes-security)
 * [Pentesting Cloud (AWS, GCP, Az...)](https://cloud.hacktricks.xyz/pentesting-cloud/pentesting-cloud-methodology)
@@ -706,7 +678,6 @@
 
 * [Physical Attacks](physical-attacks/physical-attacks.md)
 * [Escaping from KIOSKs](physical-attacks/escaping-from-gui-applications/README.md)
-  * [Show file extensions](physical-attacks/escaping-from-gui-applications/show-file-extensions.md)
 * [Firmware Analysis](physical-attacks/firmware-analysis/README.md)
   * [Bootloader testing](physical-attacks/firmware-analysis/bootloader-testing.md)
   * [Firmware Integrity](physical-attacks/firmware-analysis/firmware-integrity.md)
@@ -749,25 +720,13 @@
 * [Esoteric languages](stego/esoteric-languages.md)
 * [Blockchain & Crypto Currencies](blockchain/blockchain-and-crypto-currencies/README.md)
 
-## 🧐 External Platforms Reviews/Writeups
-
-* [BRA.I.NSMASHER Presentation](a.i.-exploiting/bra.i.nsmasher-presentation/README.md)
-  * [Basic Bruteforcer](a.i.-exploiting/bra.i.nsmasher-presentation/basic-bruteforcer.md)
-  * [Basic Captcha Breaker](a.i.-exploiting/bra.i.nsmasher-presentation/basic-captcha-breaker.md)
-  * [BIM Bruteforcer](a.i.-exploiting/bra.i.nsmasher-presentation/bim-bruteforcer.md)
-  * [Hybrid Malware Classifier Part 1](a.i.-exploiting/bra.i.nsmasher-presentation/hybrid-malware-classifier-part-1.md)
-  * [ML Basics](a.i.-exploiting/bra.i.nsmasher-presentation/ml-basics/README.md)
-    * [Feature Engineering](a.i.-exploiting/bra.i.nsmasher-presentation/ml-basics/feature-engineering.md)
-
 ## 🦂 C2
 
-* [Merlin](backdoors/merlin.md)
-* [Empire](backdoors/empire.md)
 * [Salseo](backdoors/salseo.md)
 * [ICMPsh](backdoors/icmpsh.md)
 * [Cobalt Strike](c2/cobalt-strike.md)
 
-## ✍ TODO
+## ✍️ TODO
 
 * [Other Big References](misc/references.md)
 * [Rust Basics](todo/rust-basics.md)
@@ -802,12 +761,6 @@
 * [Android Forensics](android-forensics.md)
 * [TR-069](todo/tr-069.md)
 * [6881/udp - Pentesting BitTorrent](6881-udp-pentesting-bittorrent.md)
-* [CTF Write-ups](ctf-write-ups/README.md)
-  * [challenge-0521.intigriti.io](ctf-write-ups/challenge-0521.intigriti.io.md)
-  * [Try Hack Me](ctf-write-ups/try-hack-me/README.md)
-    * [hc0n Christmas CTF - 2019](ctf-write-ups/try-hack-me/hc0n-christmas-ctf-2019.md)
-    * [Pickle Rick](ctf-write-ups/try-hack-me/pickle-rick.md)
-* [1911 - Pentesting fox](1911-pentesting-fox.md)
 * [Online Platforms with API](online-platforms-with-api.md)
 * [Stealing Sensitive Information Disclosure from a Web](stealing-sensitive-information-disclosure-from-a-web.md)
 * [Post Exploitation](post-exploitation.md)
